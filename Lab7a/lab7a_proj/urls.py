@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from lab7a_app.views import home, studentlist,courselist,register,enrolledStudents,add_project
+from lab7a_app.views import home, studentlist,courselist,register,enrolledStudents,add_project, StudentListView, StudentDetailView
 urlpatterns = [
 path('secretadmin/', admin.site.urls),
 path('',home),
@@ -26,4 +26,6 @@ path('courselist/',courselist),
 path('register/',register),
 path('enrolledlist/',enrolledStudents),
 path('addproject/',add_project),
+path('genericlistviewstudent/',StudentListView.as_view()), 
+path('genericdetailedviewstudent/<int:pk>/',StudentDetailView.as_view()), 
 ]

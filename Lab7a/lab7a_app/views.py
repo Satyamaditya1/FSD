@@ -1,7 +1,8 @@
 from django.http import HttpResponse 
 from django.shortcuts import render 
 from lab7a_app.models import student,course, projectForm 
- 
+from django.views import generic 
+
 # Create your views here. 
 def home(request): 
     return render(request,'home.html') 
@@ -54,3 +55,11 @@ def add_project(request):
     else:
         form=projectForm()
         return render(request, "projectReg.html",{'form':form})
+
+class StudentListView(generic.ListView): 
+    model=student 
+    template_name="GenericListViewStudent.html" 
+ 
+class StudentDetailView(generic.DetailView): 
+    model=student
+    template_name="GenericDetailedViewStudent.html" 
